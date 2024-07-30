@@ -1,0 +1,80 @@
+El valor de Peso Unitario (kg) es el dato que viene bajo la clave “Peso_Unitario” del objeto correspondiente. ESTO ES FUNDAMENTAL: Este valor debe venir convertido si es necesario a KG siosi y como signos de puntación debe SIOSI utilizar comas para separar decimales y puntos (.) para separar miles. Además es OBLIGATORIO que venga con 5 decimales. Por ejemplo: el valor "0,18" está mal y debe venir como "0,18000"
+
+Si el conjunto de datos de Peso Unitario (kg) fuera este:
+"0,00018",
+"0,000185",
+"0,00003167",
+"0,000135",
+"0,000135",
+"0,000135",
+"0,00018"
+
+Debería ser reconvertido así:
+
+[
+    "0.00018",
+    "0.00018",
+    "0.00003",
+    "0.00014",
+    "0.00014",
+    "0.00014",
+    "0.00018"
+]
+
+
+PARA SUBTIPO DE ENVASE JAMÁS DEVUELVAS PUNTOS Y COMAS como separador de valores, SIEMPRE DEVUELVE COMAS.
+
+El valor de Subtipo de Envase depende de su valor asociado a la clave "Código cpra 2" de la siguiente manera:
+ 
+1 Si el valor asociado a la clave "Código cpra 2" aparece el código: AGR El valor de subtipo de envase será igual a: Cajas, estuches, paletas y jaulas 
+2 Si el valor asociado a la clave "Código cpra 2" aparece el código: ANI El valor de subtipo de envase será igual a: Anilla 
+3 Si el valor asociado a la clave "Código cpra 2" aparece el código: BAR El valor de subtipo de envase será igual a: Barril / depósito 
+4 Si el valor asociado a la clave "Código cpra 2" aparece el código: BOP El valor de subtipo de envase será igual a: Botellas, asimilables y otros 
+5 Si el valor asociado a la clave "Código cpra 2" aparece el código: BOV El valor de subtipo de envase será igual a: Botellas, asimilables y otros 
+6 Si el valor asociado a la clave "Código cpra 2" aparece el código: BRR	 El valor de subtipo de envase será igual a: Barril / depósito 
+7 Si el valor asociado a la clave "Código cpra 2" aparece el código: CTN El valor de subtipo de envase será igual a: Bandeja, base, barqueta 
+8 Si el valor asociado a la clave "Código cpra 2" aparece el código: EA El valor de subtipo de envase será igual a: Resto embalajes flexibles (film, lámina) 
+9 Si el valor asociado a la clave "Código cpra 2" aparece el código: EPR	El valor de subtipo de envase será igual a: Cajas, estuches, paletas y jaulas 
+10 Si el valor asociado a la clave "Código cpra 2" aparece el código: ETI El valor de subtipo de envase será igual a: Etiqueta menor que 2/3 del envase 
+11 Si el valor asociado a la clave "Código cpra 2" aparece el código: LAT El valor de subtipo de envase será igual a: Latas 
+12 Si el valor asociado a la clave "Código cpra 2" aparece el código: MAU El valor de subtipo de envase será igual a: Otros 
+13 Si el valor asociado a la clave "Código cpra 2" aparece el código: PAL El valor de subtipo de envase será igual a: Cajas, estuches, paletas y jaulas 
+14 Si el valor asociado a la clave "Código cpra 2" aparece el código: PCK El valor de subtipo de envase será igual a: Bandeja, base, barqueta 
+15 Si el valor asociado a la clave "Código cpra 2" aparece el código: PET El valor de subtipo de envase será igual a: Otros (resina PET) 
+16 Si el valor asociado a la clave "Código cpra 2" aparece el código: PLT El valor de subtipo de envase será igual a: Resto embalajes flexibles (film, lámina) 
+17 Si el valor asociado a la clave "Código cpra 2" aparece el código: TPB El valor de subtipo de envase será igual a: Tapón de plástico 
+18 Si el valor asociado a la clave "Código cpra 2" aparece el código: TPN El valor de subtipo de envase será igual a: Cierre magnético de acero (chapa)
+
+Principal / Auxiliar:
+El valor de Principal / Auxiliar varía según la naturaleza del artículo. SIEMPRE HABRÁ UN ÚNICO ARTÍCULO PRINCIPAL Y EL RESTO SERÁN AUXILIARES. Para determinar esto, es fundamental identificar cuál es el artículo de mayor importancia en la lista. Por ejemplo, en esta lista (LAM EST ANONIMA ABI 310 g // TAPON CORONA BUDWEISER // BOTELLA 1/4 NR BUDWEISER // ETIQUETA 25CL NR BUDWEISER // COLLARIN 25CL BUDWEISER // CONTRAETIQUETA 25CL BUDWEISER // CAJA PM 24 BT1/4 BUDWEISER) el artículo principal será aquel que contenga la palabra "Botella", mientras que los demás serán considerados auxiliares.
+
+Tipo de envase según RPP:
+Utilizar la siguiente información para determinar el Tipo de envase según RPP basándose en la combinación del código y la clave correspondiente:
+Utilizar la siguiente tabla de referencia para clasificar tanto según Principal / Auxiliar y Tipo de envase según RPP
+
+
+Código,Descripción UV,Principal/Auxiliar,Subtipo envase,Tipo RPP
+1.	Si el valor asociado a la clave "Código cpra 2" aparece el código: AGR, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Cajas, estuches, paletas y jaulas, y su tipo RPP será: Envase de transporte o envase terciario.
+2.	Si el valor asociado a la clave "Código cpra 2" aparece el código: ANI, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Otros, y su tipo RPP será: Envase de transporte o envase terciario.
+3.	Si el valor asociado a la clave "Código cpra 2" aparece el código: BAR, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Barril / depósito, y su tipo RPP será: Barril / depósito.
+4.	Si el valor asociado a la clave "Código cpra 2" aparece el código: BOP, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Botellas, asimilables y otros, y su tipo RPP será: Envases primarios o envase de venta.
+5.	Si el valor asociado a la clave "Código cpra 2" aparece el código: BOV, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Botellas, asimilables y otros, y su tipo RPP será: Envases primarios o envase de venta.
+6.	Si el valor asociado a la clave "Código cpra 2" aparece el código: BRR, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Barril / depósito, y su tipo RPP será: Barril / depósito.
+7.	Si el valor asociado a la clave "Código cpra 2" aparece el código: CTN, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Bandeja, base, barqueta, y su tipo RPP será: Envase de transporte o envase terciario.
+8.	Si el valor asociado a la clave "Código cpra 2" aparece el código: EA, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: (vacío), y su tipo RPP será: (vacío).
+9.	Si el valor asociado a la clave "Código cpra 2" aparece el código: EPR, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: (vacío), y su tipo RPP será: (vacío).
+10.	Si el valor asociado a la clave "Código cpra 2" aparece el código: ETI, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: Etiqueta menor que 2/3 del envase, y su tipo RPP será: Envase colectivo o envase secundario.
+11.	Si el valor asociado a la clave "Código cpra 2" aparece el código: COL, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: Etiqueta menor que 2/3 del envase, y su tipo RPP será: Envase colectivo o envase secundario.
+12.	Si el valor asociado a la clave "Código cpra 2" aparece el código: CON, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: Etiqueta menor que 2/3 del envase, y su tipo RPP será: Envase colectivo o envase secundario.
+13.	Si el valor asociado a la clave "Código cpra 2" aparece el código: LAT, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Latas, y su tipo RPP será: Latas para bebidas.
+14.	Si el valor asociado a la clave "Código cpra 2" aparece el código: MAU, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: (vacío), y su tipo RPP será: (vacío).
+15.	Si el valor asociado a la clave "Código cpra 2" aparece el código: PAL, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: (vacío), y su tipo RPP será: (vacío).
+16.	Si el valor asociado a la clave "Código cpra 2" aparece el código: PCK, el valor de Principal/Auxiliar será: Principal, y su subtipo de envase será: Bandeja, base, barqueta, y su tipo RPP será: Envase de transporte o envase terciario.
+17.	Si el valor asociado a la clave "Código cpra 2" aparece el código: PET, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: (vacío), y su tipo RPP será: (vacío).
+18.	Si el valor asociado a la clave "Código cpra 2" aparece el código: PLT, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: Resto embalajes flexibles (film, lámina), y su tipo RPP será: Envase colectivo o envase secundario.
+19.	Si el valor asociado a la clave "Código cpra 2" aparece el código: TPB, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: Cierre, y su tipo RPP será: Envases primarios o envase de venta.
+20.	Si el valor asociado a la clave "Código cpra 2" aparece el código: TPN, el valor de Principal/Auxiliar será: Auxiliar, y su subtipo de envase será: Cierre magnético de acero (chapa), y su tipo RPP será: Envases primarios o envase de venta.
+
+Por último, no olvides que:
+
+El valor de Principal / Auxiliar varía según la naturaleza del artículo. SIEMPRE HABRÁ UN ÚNICO ARTÍCULO PRINCIPAL Y EL RESTO SERÁN AUXILIARES. Para determinar esto, es fundamental identificar cuál es el artículo de mayor importancia en la lista.
